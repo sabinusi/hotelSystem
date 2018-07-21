@@ -1,0 +1,75 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2" >
+			<ul class="list-group" style="margin-left:-12px;margin-right:-9px;" >
+			 
+			  	<p class="list-group-item" >
+                      <span>
+                    	<img  height="15%" width="10%"   src="./assets/food.jpg" alt="First slide">
+                     </span>
+                <a (click)="goProduct()">Products</a>  <span class="float-right"><a (click)="goOtherProducts()">Others</a></span>
+                
+                 
+               </p>
+   			  	<a class="list-group-item"  (click)="goCategory()">
+                         <span>
+                       	<img  height="15%" width="10%"   src="./assets/category.png" alt="category">
+                        </span>
+                    Category
+                   
+                    
+                 </a>
+			  
+			  
+			  	<a class="list-group-item" (click)="goStore()">
+                               <span>
+                            	<img  height="15%" width="10%"   src="./assets/store.jpg" alt="First slide">
+                              </span>
+                          Store
+                 </a>
+
+
+			  
+	           <a class="list-group-item"  (click)="goWhareHouse()" >
+                             <span>
+                          	<img  height="15%" width="10%"   src="./assets/whare.jpg" alt="First slide">
+                            </span>
+                      WhareHouse
+                </a>
+               <a class="list-group-item"  (click)="goPhone()" >
+                               <span class="glyphicon glyphicon-phone"> 
+                              
+                              </span>
+                        PhoneSetup
+              </a>
+              <a class="list-group-item  dropdown-toggle" data-toggle="dropdown">
+                 <span class="glyphicon glyphicon-book">
+                </span>
+              Report</a>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" (click)="sales()" style="font-size:14px; " >SalesReport</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" (click)="storeReport()" style="font-size:14px; ">StoreReport</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" (click)="wharehouseReport()" style="font-size:14px; ">WhareHouseReport</a>
+                </div>
+			</ul>
+		</div>
+		<div class="col-md-10"  style="background-color: #F9F9F9">
+
+			  <router-outlet name="p"></router-outlet> 
+			  <router-outlet name="s">
+         
+        </router-outlet> 
+        <router-outlet name="op"></router-outlet> 
+        <router-outlet name="w"></router-outlet> 
+        <router-outlet name="ph"></router-outlet> 
+        <router-outlet name="sr"></router-outlet> 
+        <router-outlet name="wr"></router-outlet> 
+			  <router-outlet name="str"></router-outlet> 
+        <router-outlet name="o"></router-outlet> 
+			  
+		</div>
+	</div>
+	
+</div>

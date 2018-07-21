@@ -1,0 +1,221 @@
+<popup (cancelClick)="cancelPayment()" (confirmClick)="goToReceipt()">
+
+	<!-- display money -->
+  <div class="container" id="main" style="width: 300px;" *ngIf="pay" >
+  	<div class="row" >
+  		<div class="col-md-5 ">CustomerPay</div>
+  		<div class="col-md-7 "> <h3 class="form-control" style="height: 30px !important;">
+  			<span style="font-size: 20px;">Sh {{customer}} </span>
+  		</h3> </div>
+    </div>
+    
+  	<div class="row">
+  		<div class="col-md-5">Required</div>
+  		<div class="col-md-7"> <h3 class="form-control" style="height: 30px !important;">
+  			<span style="font-size: 20px;">Sh  {{total}}  </span> </h3>  </div>
+  	</div>
+  	<hr>
+  	<div class="row">
+  		<div class="col-md-5">Change</div>
+  		<div class="col-md-7"><span style="font-size: 20px;">Sh {{change}} /=</span> </div>
+  	</div>
+  	<hr>
+  	
+  	
+  
+    <!-- display money -->
+    <!-- display number -->
+    <div class="row">
+    	<div class="col-md-12 numpad">
+    		<button class="input-button " (click)="addNumber('moja')" id="moja">1</button>
+    		<button class="input-button "(click)="addNumber('mbili')" id="mbili">2</button>
+    		<button class="input-button "(click)="addNumber('tatu')" id="tatu">3</button>
+    		<button class="input-button " (click)="backward()" >
+    			<span class="glyphicon glyphicon-backward" style="position: absolute;margin-top: 40px;z-index: 3;"></span>
+    		</button>
+    		
+    	</div>
+    	<div class="col-md-12 numpad" >
+    		<button class="input-button " (click)="addNumber('nne')" id="nne">4</button>
+    		<button class="input-button " (click)="addNumber('tano')" id="tano">5</button>
+    		<button class="input-button "(click)="addNumber('sita')" id="sita">6</button>
+    		<button class="input-button " (click)="backward()"></button>
+    		
+    	</div>
+    	<div class="col-md-12 numpad" >
+    		<button class="input-button " (click)="addNumber('saba')" id="saba">7</button>
+    		<button class="input-button " (click)="addNumber('nane')" id="nane">8</button>
+    		<button class="input-button "(click)="addNumber('tisa')" id='tisa'>9</button>
+    		<button class="input-button " (click)="addNumber('zero')" id="zero">0</button>
+
+    		
+    	</div>
+
+
+    		
+    	</div>
+    </div>
+    <!-- display number -->
+    <!-- display receipt -->
+    <div class="container" id="recep" *ngIf="receipt" style="width: 290px;">
+<button style="margin-bottom: 2px;" class="btn btn-secondary glyphicon glyphicon-print form-control" (click)="print('prin')" >Print</button>    	
+
+<div id="prin">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<div class="pos-receipt-container">
+    				<div class="pos-sale-ticket">
+    					
+    						<img align="middle" src="./assets/rs.png" style="height: 40px; width: 40px;" alt="">
+    					
+    					
+    					<caption style="text-align: center !important; font-size: 16px !important; text-transform: capitalize; ">MobilePowerRestaurant </caption>
+    				      <table style="width: 100%;">
+    				      	<thead style="border-bottom: 2px dotted ;">
+    				      		<tr>
+    				      			<td>PhoneNumber</td>
+    				      			<td style="text-align: right;">
+    				      				08977388338
+    				      			</td>
+    				      		</tr>
+    				      		<tr>
+    				      			<td>Location</td>
+    				      			<td style="text-align: right;">
+    				      				GreenHeckers
+    				      			</td>
+    				      		</tr>
+    				      	</thead>
+    				      	<tbody>
+    				      		<tr *ngFor="let item of nameArray, let i=index">
+    				      				
+    				      				
+		      					<td >{{item}} </td>
+		      				
+		      					<td  style="text-align: right;" > Sh {{priceArray[i]}} /= 
+		      					</td>
+    				      		
+    				      		</tr>
+
+    				      		<tr style="border-top: 1px dotted;width: 50%;">
+    				      			<td ><i>Total</i></td>
+    				      			<td style="text-align: right;">Sh {{total}} /=</td>
+    				      		</tr>
+    				      		<tr>
+    				      			<td><i>Issued</i> </td>
+    				      			<td style="text-align: right;">Sh {{customer}} /=</td>
+    				      		</tr>
+    				      		<tr style="border-bottom: 1px dotted;">
+    				      			<td><i>Change</i> </td>
+    				      			<td style="text-align: right;">Sh {{change}} /=</td>
+    				      		</tr>
+    				      		<tr>
+    				      			<td>PaymentMethod</td>
+    				      			<td style="text-align: right;text-decoration-style: dotted;">CASH</td>
+    				      		</tr>
+    				      	</tbody>
+    				      </table>     
+    				  </div>
+    				
+    			</div>
+    		</div>
+
+    	</div>
+    	</div>
+    </div>
+    <!-- display receipt -->
+</popup>
+
+ <div class="container-fluid">
+	<div class="row">
+		<!-- left side -->
+		<div class="col-md-3 " >
+			<!-- display -->
+			<div class="row moneyDisplay">
+				<div class="col-md-12 ">
+					<div class="row" >
+						<div class="col-md-1">
+                         </div>
+						<div class="col-md-5" >
+							<div *ngFor="let item of nameArray ">
+								{{item}}
+							</div>
+							
+						</div>
+						<div class="col-md-5" >
+							<div *ngFor="let item of priceArray">
+								<span>sh {{item}}/=</span> 
+							</div>
+							
+						</div>
+						
+					</div>
+					<div class="row total" >
+						<div class="col-md-1"></div>
+						<div class="col-md-5">total</div>
+						<div class="col-md-5">sh {{total}} /=</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- display -->
+			<!-- display payment option -->
+			<div class="row batan">
+
+				<div class="col-md-8" style="border-right: 2px solid green;">
+					<button (click)="payment()" class="btn btn-primary form-control" style="margin-top: 4px;margin-bottom: 4px;"  >Payment</button>
+				</div>
+				<div class="col-md-4" style="margin-top: 4px;margin-bottom: 3px;">
+					<button class="btn btn-info form-control" (click)="clear()">Clear</button>
+				</div>
+			</div>
+			<!-- display payment option -->
+		</div>
+		<!-- left side -->
+		<!-- right side -->
+		<div class="col-md-9">
+			<!-- category option -->
+			<ul class="nav nav-tabs" style="border-bottom: 2px groove green;" role="tablist">
+				<li class="nav-item" (click)="home()">
+					<a class="nav-link"><span class="glyphicon glyphicon-home active" ></span></a>
+				</li>
+			   <li class="nav-item" *ngFor="let item of category, let i=index">
+			    <a class="nav-link active" (click)="changeContent(item.name)" data-toggle="tab" [attr.id]="item.name"  role="tab">{{item.name}}</a>
+			  </li>
+			  
+			</ul>
+			<!-- category option -->
+			<!-- list option -->
+			<div class="tab-content" >
+				<div class="tab-pane active" id="home" role="tabpanel">
+					<!-- list items row-->
+			  		<div class="row">
+			  			<div class="col-md-12"  >
+			  				<div class="product-list">
+			  					<div class="product"  *ngFor="let item of categoryProduct,let i=index">
+			  						<div (click)="namePrice(i)">
+			  					           <div class="product-img">
+			  						             <img src="{{item.pic}}" alt="image" *ngIf="item.pic">
+                                                 <img src="/assets/def.jpg"  >
+			  						                     <span class="price-tag">
+			  						                        sh <span [attr.id]="i">{{item.price}}</span>  /=
+			  						                    </span>
+			  					           </div>
+			  					      <div [attr.id]="[i,i]" class="product-name">
+			  					     	{{item.name}} 
+			  					      </div>
+                                     <span id="available">{{item.avilableForSell}}</span> 
+			  					      </div>
+			  					</div>
+			  				</div>
+			  				
+			  			</div>
+			  		</div>
+			  		<!-- list items -->
+			  	</div>
+			</div>
+			<!-- list option -->
+		</div>
+		<!-- right side -->
+	</div>
+	
+</div>
